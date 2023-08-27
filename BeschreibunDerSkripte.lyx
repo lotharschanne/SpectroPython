@@ -1,0 +1,1216 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrartcl
+\use_default_options true
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Aufzählung und und Beschreibung der vorhandenen Pythonskripte
+\end_layout
+
+\begin_layout Author
+von Dr.
+ Lothar Schanne
+\end_layout
+
+\begin_layout Standard
+Um die Skripte verwenden zu können müssen die Python-Module in der verwendeten
+ Pythondistribution installiert sein, die am Anfang der Skripte mit den
+ import-Befehlen importiert werden.
+\end_layout
+
+\begin_layout Standard
+Man kann die Skripte auf verschiedenen Wegen starten:
+\end_layout
+
+\begin_layout Standard
+Beim einfachsten geht man in eine Konsole, wechselt in das Verzeichnis,
+ in dem die Spektrumdateien (fits) enthalten sind, die man bearbeiten will
+ und startet das jeweilige Skript mit dem Befehl:
+\end_layout
+
+\begin_layout Standard
+python3 Pfad/zu/dem/Skript/Skriptname.py
+\end_layout
+
+\begin_layout Standard
+Eine andere Methode ist der Start eines Skripts innerhalb einer Entwicklungsumge
+bung.
+ Ich bevorzuge dafür Spyder, das den Vorteil bietet, dass neben einer Konsole,
+ in der das Skript abgearbeitet wird auch ein Fenster mit dem Pythoncode
+ des Skripts existiert (so dass man schnell z.B.
+ Parameter anpassen oder einzelne Zeilen auskommentieren oder ändern kann).
+ Außerdem werden im Programmablauf erzeugte Variabeln im Variablenmanagerfenster
+ angezeigt.
+ Das kann hilfreich sein, wenn etwas schiefgeht und man z.B.
+ sehen kann, bei welcher Spektrumdatei das Programm unterbrochen wurde,
+ weil dort ein header-Eintrag fehlt.
+ Und man sieht im Dateienfenster die Dateien, welche sich im Arbeitsverzeichnis
+ aktuell befinden (inklusive derjenigen, die zwischenzeitlich vom laufenden
+ Skript erzeugt wurden).
+ Außerdem kann man in Spyder das Arbeitsverzeichnis einstellen und in die
+ Umgebungsvariable PYTHONPATH die Pfade zu den Skripten aufnehmen, so dass
+ die Skripte automatisch in diesen Pfadverzeichnissen gesucht werden.
+\end_layout
+
+\begin_layout Standard
+Bei den meisten Skripten, welche Grafikfenster (z.B.
+ Abbildungen von Spektren) erzeugen, wird am Anfang des Skripts auf ein
+ interaktives backend (QT5Agg) umgeschaltet.
+ D.h.
+ die geöffneten Grafikfenster können aktiv verändert werden, wenn der Fokus
+ auf ein Fenster gelegt wurde.
+ Also kann das Fenster vergrößert oder verkleinert werden, oder von dem
+ dargestellten Inhalt (das Spektrum) kann ein Ausschnitt ausgewählt werden,
+ der Ausschnitt kann verschoben werden, die Grafik kann gespeichert werden
+ etc.
+ So kann man sich Details eines Spektrums genauer anschauen.
+\end_layout
+
+\begin_layout Section*
+Ordner ascii
+\end_layout
+
+\begin_layout Subsection*
+1d_dat_read_plot_csv_speichern.py
+\end_layout
+
+\begin_layout Standard
+Das Skript liest eine ASCII-Datei und plottet das Spektrum.
+ Die ASCII-Datei hat 2 Spalten mit den Spaltenüberschriften 'WAVE' und 'FLUX'.
+ Die Erweiterung der Datei ist .dat.
+ Das Trennzeichen wird automatisch mit guess=True ermittelt.
+ Plotten und Speichern als csv ohne Spaltenüberschriften (Skriptzeilen 40
+ und 41).
+\end_layout
+
+\begin_layout Subsection*
+1d_txt_plotten.py
+\end_layout
+
+\begin_layout Standard
+Das Skript liest ein Spektrum, das in einer ASCII-Datei gespeichert ist.
+ Die Daten sind in 2 Spalten mit Float-Zahlen (Wellenlänge und Fluss) ohne
+ Überschrift.
+ Pfad/Name werden abgefragt.
+ Das Spektrum wird geplottet.
+\end_layout
+
+\begin_layout Subsection*
+comparison_plot_2spectra_ascii.py
+\end_layout
+
+\begin_layout Standard
+Das Skript ist gedacht um ein gemessenes Spektrum und ein Template (z.B.
+ ein theoretisches Spektrum) übereinander zu plotten und so zu vergleichen.
+\end_layout
+
+\begin_layout Standard
+Es liest das Template und das gemessene Spektrum ein (Eingabe von Pfad/Name).
+ Die 1d-Spektren müssen als tab-separierte ASCII-Tabellen vorliegen mit
+ den Spaltenüberschriften 'WAVE' und 'FLUX'.
+ Der Plot wird als PDF abgespeichert (Zeile 38).
+\end_layout
+
+\begin_layout Subsection*
+PlotAndCrop_1d_ascii.py
+\end_layout
+
+\begin_layout Standard
+Das Skript hat die Aufgabe, ein im ASCII-Format vorliegendes 1d-Spektrum
+ mit den beiden Spalten 'WAVE' und 'FLUX' zu plotten.
+ Danach kann eine Wellenlängenbereich eingegeben werden, auf den das Spektrum
+ reduziert wird (croppen).
+ Dieser Ausschnitt wird dann geplottet und als ASCII-Datei gespeichert,
+ wobei im Namen der Datei der Wellenlängenbereich genannt wird.
+\end_layout
+
+\begin_layout Section*
+Ordner astroplanner
+\end_layout
+
+\begin_layout Subsection*
+astroplanner.py
+\end_layout
+
+\begin_layout Standard
+Berechnet die Höhe des Objektes über dem Horizont für einen Zeitpunkt an
+ einem Beobachtungsort und plottet sie über einen Zeitraum von 24 Stunden.
+ Eingabe des Sterns, des Beobachters und des Datums nötig.
+\end_layout
+
+\begin_layout Subsection*
+astroplanner_fuer_Objektliste.py
+\end_layout
+
+\begin_layout Standard
+Berechnet die Höhen der Objekte einer Objektliste (ascii-Datei (csv) mit
+ den Objektnamen in einer Spalte) über dem Horizont für einen geolanten
+ Zeitpunkt an einem Beobachtungsort und plottet sie über einen Zeitraum
+ von 24 Stunden.
+ Die Grafiken werden als pdf im Arbeitsverzeichnis gespeichert.
+ Eingabe der Liste der Sterne, des Beobachters und des Datums/Zeitpunkts
+ nötig.
+\end_layout
+
+\begin_layout Section*
+Ordner BC
+\end_layout
+
+\begin_layout Subsection*
+BC_1d_spectra_fits_series.py
+\end_layout
+
+\begin_layout Standard
+Das Skript berechnet die baryzentrische Korrektur BC und das korrigierte
+ JD als HJD einer Serie von 1d-Spektren im Fits-Format eines Objekts.
+ Schreibt eine ascii-Datei (Format-Tab) mit den BC's und HJD's in das Arbeitsver
+zeichnis.
+ Korrigiert auf Wunsch die eingelesenen Spektren um die berechnete baryzentrisch
+e Korrektur BC und speichert sie als fits ab (und nach auskommentieren der
+ Zeilen 206 bis 213 auch als asci-Tabelle).
+\end_layout
+
+\begin_layout Standard
+Vorab müssen im Skript die Koordinaten des Beobachters und des Objekts eingegebe
+n oder auskommentiert/einkommentiert werden.
+ Standardmäßig werden die Koordinaten des Objekts aus dem Internet eingelesen
+ (Internetanschluß nötig), können aber auch manuell im Skript eingetragen
+ werden (Zeilenbereich 71 bis 107).
+\end_layout
+
+\begin_layout Section*
+Ordner Convolution
+\end_layout
+
+\begin_layout Subsection*
+convol_dat.py
+\end_layout
+
+\begin_layout Standard
+Das Skript wird verwendet, um ein hoch-aufgelöstes (meist ein theoretisches)
+ 1d-Spektrum mit einer Standardabweichung (bestimmt aus dem Apparateprofil
+ des Spektrographen) so zu verbreitern, dass die Linienbreiten dem gemessen
+ Spektren entsprechen.
+\end_layout
+
+\begin_layout Standard
+Einlesen eines 1d-Spektrums in Form einer ASCII-Tabelle mit der Extension
+ .dat, 2-spaltig mit den Spaltenüberschriften 'WAVE' und 'FLUX'.
+ Das Spektrum wird mit einer Standardabweichung convolviert (stddev in der
+ Einheit des step).
+ Der convolvierte Flux wird zusammen mit der Wellenlänge in einer zweispaltigen
+ ASCII-Tabelle abgespeichert (spacer = tab).
+ Mit den Spaltenüberschriften 'WAVE' und 'FLUX'.
+ Außerdem werden die beiden Spektren geplottet und die Plots als PDF und
+ PNG gespeichert.
+\end_layout
+
+\begin_layout Subsection*
+convol_fits.py
+\end_layout
+
+\begin_layout Standard
+Einlesen eines 1d-Spektrums in Form einer fits-Datei.
+\end_layout
+
+\begin_layout Standard
+Das Spektrum kann mit einer Standardabweichung, ausgedrückt durch die Auflösung
+ R, convolviert (gefaltet) werden.
+ Die gefaltete fits-Datei wird abgespeichert, wobei das R im Namen der Datei
+ genannt wird.
+\end_layout
+
+\begin_layout Subsection*
+Pollux_Ausschnitt_convol.py
+\end_layout
+
+\begin_layout Standard
+Einlesen eines synthetischen Spektrums in Form einer Tabelle (wie als .spec
+ in der Pollux-Datenbank erhältlich, 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://pollux.graal.univ-montp2.fr/
+\end_layout
+
+\end_inset
+
+).
+ In dem begleitenden Pollux-file Spektrum.txt sind Startwellenlänge und step
+ angegeben.
+ Berechnung eines wählbaren Ausschnitts (Pandas Dataframe mit 'bereich'
+ bezeichnet).
+ Geplottet wird die Spalte 'NFLUX' = normierter Flux für das gesamte Spektrum
+ und für bereich.
+ Der Bereich kann mit einer Standardabweichung gefaltet werden (stddev in
+ der Einheit des step).
+ Der convolvierte Flux wird zusammen mit der Wellenlänge in einer zweispaltigen
+ ASCII-Tabelle abgespeichert (spacer = tab, Spaltennamen WAVE und FLUX).
+ 
+\end_layout
+
+\begin_layout Subsection*
+rotationsverbreiterung_fits.py
+\end_layout
+
+\begin_layout Standard
+Einlesen einer Serie von 1d-Spektren im fits-Format (gedacht für synthetische
+ Spektren zum Einrechnen der Rotationsverbreiterung und des limb-darkening-Effek
+ts)).
+\end_layout
+
+\begin_layout Standard
+Durch Eingabe des limb-darkening-Koeffizients und der Rotationsgeschwindigkeit
+ werden die Spektren rotationsverbreitert.
+ Die convolvierten fits-Dateien werden abgespeichert, wobei die Dateinamen
+ mit dem Begriff 'rotverbreitert' ergänzt werden.
+\end_layout
+
+\begin_layout Section*
+Ordner DarstellungGeschwindigkeitsraum
+\end_layout
+
+\begin_layout Subsection*
+fitsSerie_Linie_imGeschwindigkeitsraum
+\end_layout
+
+\begin_layout Standard
+Einlesen einer Serie von heliozentrisch korrigierten Spektren im fits-Format,
+ Darstellung einer wählbaren Linie im Geschwindigkeitsraum in zwei Plots:
+ Erstens alle Spektren übereinander geplottet.
+ Zweitens alle Spektren mit einem wählbaren offset übereinander geplottet.
+ Die plots können als pdf abgespeichert werden.
+\end_layout
+
+\begin_layout Subsection*
+fitsSerie_Linie_imGeschwindigkeitsraum_JDBereich.py
+\end_layout
+
+\begin_layout Standard
+Einlesen einer Serie von heliozentrisch korrigierten Spektren im fits-Format,
+ Eingabe eines Zeitraums als JD Anfang und JD Ende.
+ Darstellung einer wählbaren Linie im Geschwindigkeitsraum in zwei Plots:
+ 
+\end_layout
+
+\begin_layout Standard
+Erstens alle Spektren übereinander geplottet.
+ 
+\end_layout
+
+\begin_layout Standard
+Zweitens alle Spektren mit einem wählbaren offset übereinander geplottet.
+ 
+\end_layout
+
+\begin_layout Standard
+Die plots können als pdf und png abgespeichert werden.
+\end_layout
+
+\begin_layout Subsection*
+fitsSerie_Linien_imGeschwindigkeitsraum_JDBereich.py
+\end_layout
+
+\begin_layout Standard
+Einlesen einer Serie von heliozentrisch korrigierten Spektren im fits-Format,
+ Eingabe eines Zeitraums als JD Anfang und JD Ende.
+ Darstellung mehrerer wählbarer Linien im Geschwindigkeitsraum in einem
+ Plot, mit einem wählbaren offset übereinander geplottet.
+ Die plots können als pdf und png abgespeichert werden.
+\end_layout
+
+\begin_layout Section*
+Order EW
+\end_layout
+
+\begin_layout Subsection*
+Zeitserie_EW.py
+\end_layout
+
+\begin_layout Standard
+Berechnet für eine Zeitserie AUF DAS KONTINUUM NORMIERTER SPEKTREN im fit-Format
+ die Äquivalentweite einer Linie.
+ Eingabe der Integrationsgrenzen grafisch-interaktiv oder manuell.
+ Die EW-Berechnung setzt voraus, dass für alle Spektren der Serie das gleiche
+ Wellenlängenintervall für die Berechnung des Integrals verwendet werden
+ kann, also keine wesentlichen RV-Änderungen stattfinden, oder wenn doch,
+ dass die Linie isoliert ist (also der Flux = 1 im Umfeld ist)
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Falls das nicht vorausgesetzt werden kann müssen die Spektren zuerst bzgl.
+ ihrer RV's korrigiert werden, was mit dem Skript RVKorrekturPerTemplate_1d_spec
+tra_fits_series.py im Ordner RV_Korrektur unter Verwendung eines Templates
+ erfolgen kann.
+\end_layout
+
+\end_inset
+
+.
+ Am besten heliozentrisch korrigierte Spektren verwenden.
+ Die EW's werden in einer ASCII-Tabelle mit den Spalten 'Spektrum' und 'EW'
+ abgespeichert.
+\end_layout
+
+\begin_layout Subsection*
+Zeitserie_EW_Linientiefe_Linienwellenlaenge.py
+\end_layout
+
+\begin_layout Standard
+Berechnet für eine Zeitserie AUF DAS KONTINUUM NORMIERTER SPEKTREN im fits-Forma
+t die Äquivalentweite einer Linie, sowie die Linientiefe und die Wellenlänge
+ des Linienminimums.
+ Eingabe der Integrationsgrenzen manuell oder grafisch.
+ 
+\end_layout
+
+\begin_layout Standard
+Normierungsfehler werden durch eine Renormierungroutine im Integrationsbereich
+ kompensiert.
+\end_layout
+
+\begin_layout Standard
+Die EW-Berechnung setzt voraus, dass für alle Spektren der Serie das gleiche
+ Wellenlängenintervall für die Berechnung des Integrals verwendet werden
+ kann, also keine wesentlichen RV-Änderungen stattfinden, oder wenn doch,
+ dass die Linie isoliert ist (also der Flux = 1 im Umfeld ist).
+ Am besten baryzentrisch korrigierte Spektren benutzen.
+\end_layout
+
+\begin_layout Standard
+Das erste Spektrum wird geplottet und für 20 Sekunden angezeigt.
+ In diesem Zeitraum ist das Grafikfenster interaktiv geschaltet, so dass
+ man das Spektrum vergrößern kann und den Integrations-Wellenlängenbereich
+ für die EW-Berechnung optisch aussuchen kann.
+ Dieses Reaktionszeitfenster von 205 Sekunden kann in Zeile 78 (plt.pause(ZeitInS
+ekunden) geändert werden.
+\end_layout
+
+\begin_layout Subsection*
+Zeitserie_EW_BereicheInEinerLinie.py
+\end_layout
+
+\begin_layout Standard
+Berechnet für eine auf das Kontinuum normierter Zeitserie im fits-Format
+ die Äquivalentweite einer in Bereiche aufgeteilten Linie.
+ Eingabe der Integrationsgrenzen (in Angström) über eine Liste, die anzupassen
+ ist.
+ Die EW-Berechnung setzt voraus, dass für alle Spektren der Serie das gleiche
+ Wellenlängenintervall für die Berechnung des Integrals verwendet werden
+ kann, also keine wesentlichen RV-Änderungen stattfinden.
+ Deshalb am besten baryzentrisch korrigierte Spektren benutzen.
+ Die ermittelten EW's und die Flux-Minima und -Maxima der Linien-Bereiche
+ werden in einer ascii-Datei gespeichert.
+\end_layout
+
+\begin_layout Section*
+Ordner fits
+\end_layout
+
+\begin_layout Subsection*
+1d_fitSpektrum_ansehen.py
+\end_layout
+
+\begin_layout Standard
+Auslesen und Anzeige der Headerdaten eines 1d-Spektrums im fit-Format.
+ Plotten des Spektrums.
+\end_layout
+
+\begin_layout Subsection*
+1d_fitSpektrum_ansehen_mitLinienidentifikation.py
+\end_layout
+
+\begin_layout Standard
+Einlesen eines 1d-Spektrums im fits-Format, plotten des Spektrums mit der
+ Möglichkeit, eine oder mehrere Laborwellenlängen von Spektrallinien in
+ Form senkrechter Striche im plot zu markieren.
+\end_layout
+
+\begin_layout Subsection*
+1d_fitSpektrum_ansehen_Mit_Subplots.py
+\end_layout
+
+\begin_layout Standard
+Ansehen eines wellenlängenkalibrierten 1d-Spektrums, Auslesen und Anzeige
+ der Headerdaten.
+ Plotten des gesamten Spektrums und einer Aufteilung in eine wählbare Zahl
+ von Ausschnitten, die dann in entsprechenden Unterplots dargestellt werden.
+ Zusätzlich kann ein beliebiger Wellenlängenbereich ausgewählt und geplottet
+ werden.
+\end_layout
+
+\begin_layout Subsection*
+badPixFilter.py
+\end_layout
+
+\begin_layout Standard
+Das Skript dient dazu einpixelige Spikes (heisse Pixel) in 1d-Spektren zu
+ entfernen.
+\end_layout
+
+\begin_layout Standard
+Fileliste erstellen für wellenlängenkalibrierte 1d_Spektren einer Serie
+ im fit-Format.
+ Ersatz von einzelnen Pixelwerten, die oberhalb eines 
+\emph on
+Grenzwertes
+\emph default
+ (badpixel) sind, durch den Mittelwert der Nachbarpixel und abspeichern
+ aller korrigierten Spektren als sonst unverändertes fit.
+ File-Name um '_badPixRemoved' ergänzt.
+\end_layout
+
+\begin_layout Subsection*
+badPixFilter_VergleichNachbarpixel.py
+\end_layout
+
+\begin_layout Standard
+Fileliste erstellen für wellenlängenkalibrierte 1d_Spektren einer Serie
+ im fit-Format.
+ Ersatz von einzelnen Pixelwerten, die die Nachbarpixel um einen 
+\emph on
+Faktor
+\emph default
+ überschreiten,durch den Mittelwert der Nachbarpixel und abspeichern aller
+ korrigierten Spektren als sonst unverändertes fit.
+ Name um _ badPixRemoved ergänzt.
+\end_layout
+
+\begin_layout Subsection*
+fit_Serie_in_csv_und_dat.py
+\end_layout
+
+\begin_layout Standard
+Umwandeln einer Serie von wellenlängenkalibrierten 1d-Spektren im fit-Format
+ in Textformat .csv (Komma-separiert) und .dat-Format (tab-separiert).
+ Mit Spaltenüberschriften 'WAVE' und 'FLUX'.
+\end_layout
+
+\begin_layout Subsection*
+HeaderanzeigeUndKorrektur_Serie.py
+\end_layout
+
+\begin_layout Standard
+Erzeugung einer Spektrenliste der 1d-Spektren im fit-Format in einem Ordner,
+ Korrektur/Ergänzung des Headers aller Spektren.
+\end_layout
+
+\begin_layout Subsection*
+Headerprint_Serie_csv.py
+\end_layout
+
+\begin_layout Standard
+Liest für eine 1d-Spektrenserie im fits-Format die Headerdaten ein und schreibt
+ sie in getrennte ascii-Dateien (.csv).
+\end_layout
+
+\begin_layout Subsection*
+JD_EintragInHeader.py
+\end_layout
+
+\begin_layout Standard
+Das Skript liest eine Serie von fits-1d-Spektren ein und berechnet aus unterschi
+edlichen Headereinträgen für das Beobachtungsdatum das jeweilige JD und
+ trägt es als ''JD'' in den header des jeweiligen Spektrums ein.
+\end_layout
+
+\begin_layout Subsection*
+Wellenlaengenbereich_Zeitserie_fits
+\end_layout
+
+\begin_layout Standard
+Fileliste erstellen für wellenlängenkalibrierte 1d_Spektren einer Zeitreihe
+ im fit-Format.
+ Abspeichern der filelist mit Angaben zum Beginn und Ende der Wellenlängenskala.
+ Ausdrucken des gemeinsamen Wellenlängenbereichs.
+\end_layout
+
+\begin_layout Section*
+Ordner Formatumwandlungen
+\end_layout
+
+\begin_layout Subsection*
+Formatumwandlungen.py
+\end_layout
+
+\begin_layout Standard
+Umwandlung von
+\end_layout
+
+\begin_layout Itemize
+Julianisches Datum in Kalenderdaten
+\end_layout
+
+\begin_layout Itemize
+Kalenderdatum in Julianisches Datum
+\end_layout
+
+\begin_layout Itemize
+RA und DEC in hexagesimaler Form in float
+\end_layout
+
+\begin_layout Itemize
+RA und DEC von float in hexagesimale Form
+\end_layout
+
+\begin_layout Section*
+Ordner KK (Kreuzkorrelationen)
+\end_layout
+
+\begin_layout Subsection*
+CrossCorrelation_dat_Serie.py
+\end_layout
+
+\begin_layout Standard
+Es wird eine Kreuzkorrelation einer Serie von target-Spektren bzgl.
+ eines template-Spektrums durchgeführt.
+ Alle liegen als Ascii-Datei (.dat) vor.
+ Die berechneten RV's werden gedruckt und in einer Datei gespeichert.
+\end_layout
+
+\begin_layout Subsection*
+CrossCorrelation_fits_Serie.py
+\end_layout
+
+\begin_layout Standard
+Es wird eine Kreuzkorrelation einer Serie von target-Spektren bzgl.
+ eines template-Spektrums durchgeführt.
+ Beide liegen als fits vor.
+ Die RV's und wahlweise baryzentrisch korrigierten RV's werden ausgedruckt
+ und in einer Datei abgespeichert.
+ Falls die baryzentrische korrigierten RV's berechnet werden sollen, müssen
+ die Beobachter- und die Objektkoordinaten im Skript angepasst werden.
+ Standardmäßig werden die Sternkoordinaten aber durch Eingabe des Objektnamens
+ (z.B.
+ alp Ori) aus dem Internet übernommen.
+ Dazu ist allerdings eine aktive Internetverbindung nötig.
+\end_layout
+
+\begin_layout Subsection*
+CrossCorrelation_fits_Serie_einzelneLinien.py
+\end_layout
+
+\begin_layout Standard
+Es wird eine Kreuzkorrelation einer Serie von target-Spektren bzgl.
+ eines template-Spektrums durchgeführt.
+ Alle liegen als fits vor.
+ Es wird ein Spektrumausschnitt abgefragt (Umgebung einer Linie oder einer
+ Zentralwellenlänge), der zur KK verwendet wird.
+\end_layout
+
+\begin_layout Standard
+Es wird die RV und wahlweise die baryz.
+ korrigierte RV berechnet.
+ Die Daten werden in eine ascii-Datei geschrieben.
+ Falls die baryzentrische korrigierten RV's berechnet werden sollen, müssen
+ die Beobachter- und die Objektkoordinaten im Skript angepasst werden.
+ Standardmäßig werden die Sternkoordinaten aber durch Eingabe des Objektnamens
+ (z.B.
+ alp Ori) aus dem Internet übernommen.
+\end_layout
+
+\begin_layout Section*
+Ordner Lichtkurven
+\end_layout
+
+\begin_layout Subsection*
+AAVSO.py
+\end_layout
+
+\begin_layout Standard
+Übernimmt die Lichtkurvendaten aus einer csv-Datei (welche z.B.
+ von der AAVSO-Datenbank importiert wurde).
+ Man gibt den auszuwertenden Zeitraum ein (JD Anfang und Ende) und das Programm
+ berechnet die Tagesmittelwerte der mag-Werte.
+ Diese werden in eine csv geschrieben und grafisch dargestellt.
+\end_layout
+
+\begin_layout Section*
+Ordner Normierung
+\end_layout
+
+\begin_layout Subsection*
+automaticNormalization_timeseries_20230615.py
+\end_layout
+
+\begin_layout Standard
+Funktioniert für ein einzelnes oder eine Zeitreihe von 1d-Spektren im Fits-Forma
+t.
+ Beim ersten Spektrum werden die Parameter 'inter' und 'sm' optimiert.
+ Nimmt von Pixel zu Pixel ein Intervall von 'inter' Pixel und vergleicht
+ es mit den benachbarten Intervallen.
+ Findet so lokale Maxima = Stützpunkte.
+ Man kann auch mehrere Wellenlängenbereiche von der Bildung von Normalisierungsp
+unkten ausschließen, d.h.
+ löschen (breite Linien).
+ Der Glättungsparameter 'sm' (Dezimalzahl) stellt die Empfindlichkeit des
+ Splines ein der am Ende zur Normalisierung verwendet wird.
+ sm = 0.0 bedeutet: Der Spline geht durch alle Gitterpunkte.
+ Je größer sm (10.0, 100, 1000....), desto steifer ist der Spline.
+ Optimal ist ein sm, wenn der Spline die Kurven des Kontinuums gut nachzeichnet,
+ aber nicht in die Linien hineinragt.
+ Danach können Sie noch Punkte löschen, die um einen bestimmten Prozentsatz
+ größer oder kleiner als der Spline sind.
+ Schließlich werden alle Spektren der Zeitreihen mit den optimierten Parametern
+ normalisiert.
+ Die normalisierten Spektren (sowie die Plots und die Normalisierungsfunktionen)
+ werden auf Wunsch gespeichert.
+ Außerdem werden alle gewählten Parameter in einer ascii-Datei namens Parameterl
+iste.txt gespeichert.
+\end_layout
+
+\begin_layout Section*
+Ordner rebinning_differenzspektren_Periodenanalyse
+\end_layout
+
+\begin_layout Subsection*
+newbinning_mittleresSpektrum.py
+\end_layout
+
+\begin_layout Standard
+Liest einen Spektrenkatalog ein (fits), rebinnt die Spektren und erzeugt
+ tab-Spektren (tab-Tabelle mit den Spaltenbenennungen WAVE und FLUX) sowie
+ fits-Dateien, alle mit gleicher wählbarer Schrittweite und gleichem wählbarem
+ Wellenlängenbereich.
+ Die Art der Interpolation (linear oder per kubischem Spline) ist durch
+ auskommentieren wählbar (Zeilen 100 bis 106).
+ Außerdem wird ein gemitteltes Spektrum aus dem gemeinsamen Wellenlängenbereich
+ berechnet und als tab-Tabelle abgespeichert mit den Spaltennamen WAVE und
+ FLUX.
+ Das gemittelte Spektrum wird auch geplottet.
+\end_layout
+
+\begin_layout Subsection*
+Differenzspektren.py
+\end_layout
+
+\begin_layout Standard
+Liest 1d-Spektren einer Serie (im Ascii-Format 'tab', gebildet mit dem Skript
+ newbinning_mittleresSpektrum.py) ein und bildet Differenzspektren zum angegebene
+n mittleren Spektrum, die dann als tab-Datei gespeichert werden.
+ Alle Differenzspektren werden in einem Plot grafisch dargestellt, der auch
+ abgespeichert wird.
+\end_layout
+
+\begin_layout Subsection*
+Periodenanalyse.py
+\end_layout
+
+\begin_layout Standard
+Liest eine Ascii-Datei ein mit den beiden Spalten JD und zugehöriger Wert
+ (z.B.
+ RV's), ohne Spaltenüberschrift und plottet die Werte.
+ Macht dann mit beiden Spalten eine Periodenanalyse nach der Lomb-Scargle-Method
+e, zeigt grafisch das Periodogramm und die mit der Periode gefalteten Daten
+ (Phasendiagramm) und gibt die Periode aus.
+\end_layout
+
+\begin_layout Section*
+Ordner RV_Korrektur
+\end_layout
+
+\begin_layout Subsection*
+RVKorrektur_1d_spectra_fits_series.py
+\end_layout
+
+\begin_layout Standard
+Das Skript korrigiert eine Serie von 1d-Spektren im Fit-Format eines Objekts
+ um eine manuell eingegebene RV [km/s].
+ Schreibt die Fit-Dateien und Ascii-Dateien der RV-korrigierten Spektren
+ in das Arbeitsverzeichnis.
+ Die jeweilige RV wird im Header des erzeugten Fits vermerkt.
+\end_layout
+
+\begin_layout Subsection*
+RVKorrekturPerTemplate_1d_spectra_fits_series.py
+\end_layout
+
+\begin_layout Standard
+Das Skript korrigiert eine Serie von 1d-Spektren im Fit-Format eines Objekts
+ um eine per KK im Vergleich zu einem Template berechnete RV [km/s].
+ Schreibt die Fit-Dateien der RV-korrigierten Spektren in das Arbeitsverzeichnis.
+ Die jeweilige RV wird im Header des erzeugten Fits vermerkt.
+ Eine ASCII-Tabelle mit den RV's wird ebenfalls gespeichert.
+\end_layout
+
+\begin_layout Subsection*
+terrLinien_RVKorrektur_Regression_1d_spectra_fits_series
+\end_layout
+
+\begin_layout Standard
+Input: Einlesen einer Spektrenserie im fits-Format.
+ Diese dürfen nicht heliozentrisch korrigiert sein.
+\end_layout
+
+\begin_layout Standard
+Das Skript korrigiert die Kalibrierung durch Bestimmung des Linienminimums
+ von bekannten terrestrischen Linien per Regression und rechnet die Spektren
+ mit der ermittelten mittleren RV um, soweit sie betragmäßig 3 km/s überschreite
+t.
+ Abspeichern der korrigierten Spektren als fits.
+ Zeigen der modellierten terrestrischen Linien als Grafik.
+ Ausdrucken der ermittelten RV's.
+ Schreiben der RV's, des Mittelwerts und der Standardabweichung in ein ascii-fil
+e.
+\end_layout
+
+\begin_layout Subsection*
+terrLinien_RVKorrektur_RBF_1d_spectra_fits_series.py
+\end_layout
+
+\begin_layout Standard
+Input: Einlesen einer Spektrenserie im fits-Format.
+ Diese dürfen nicht heliozentrisch korrigiert sein.
+\end_layout
+
+\begin_layout Standard
+Das Skript korrigiert die Kalibrierung durch Bestimmung des Linienminimums
+ von bekannten terrestrischen Linien per RBF und Umrechnung der Spektren
+ mit der ermittelten mittleren RV.
+ Abspeichern der korrigierten Spektren als fits.
+ Zeigen der modellierten terrestrischen Linien als Grafik.
+ Ausdrucken der ermittelten RV's.
+ 
+\end_layout
+
+\begin_layout Standard
+Die terrestrischen Linien müssen natürlich in den Spektren vorhanden sein.
+ Derzeit sind 3 normalerweise wenig gestörte Wasserlinien zwischen 6543
+ und 6574 Angström berücksichtigt.
+\end_layout
+
+\begin_layout Section*
+Ordner RV_Messung
+\end_layout
+
+\begin_layout Standard
+Im Ordner RV_Messung sind Skripte vereinigt, deren Aufgabe es ist, an einzelnen
+ Spektren oder an Spektrenserien Radialgeschwindigkeitsmessungen durchzuführen.
+ Dazu dienen verschiedene Methoden:
+\end_layout
+
+\begin_layout Itemize
+KK (Kreuzkorrelation) von Spektrumausschnitten
+\end_layout
+
+\begin_layout Itemize
+Minimumbestimmung an einzelnen Linien.
+\end_layout
+
+\begin_layout Standard
+Für die Minimumbestimmung an definierten Linien existiert ein Modul namens
+\emph on
+ Linienlisten.py 
+\emph default
+in diesem Verzeichnis, der gemeinsam von vielen der RV-Bestimmungs-Skripten
+ verwendet wird und deshalb von den Skripten importiert werden muß.
+ Deshalb muss das Modul im gleichen Verzeichnis stehen wie das jeweilige
+ Skript oder in einem Verzeichnis, der in der Umgebungsvariablen PYTHONPATH
+ enthalten ist, damit Python es findet.
+ In dieses Modul können natürlich weitere Linien aufgenommen werden.
+ Dazu muß das Modul nur entsprechend editiert werden.
+\end_layout
+
+\begin_layout Subsection*
+RV_MessungAnLinie_fits_interaktiv.py
+\end_layout
+
+\begin_layout Standard
+Liest einen Spektrenkatalog ein (Zeitserie).
+ Berechnet aus dem Beobachtungszeitpunkt und den (anzupassenden) Koordinaten
+ des Beobachters und Objekts die heliozentrische Korrektur, zeigt die gewählte
+ Linie in einem Plot, das Minimum der gewählten Linie ist anzuklicken, berechnet
+ aus dem Minimum die heliozentrisch korrigierte Radialgeschwindigkeit RV_bc.
+ Gibt die ermittelten Daten als ASCII-Dateien (tab-separiert) aus.
+ 
+\end_layout
+
+\begin_layout Subsection*
+RV_MessungAnLinie_Zeitserie_dat_perInteraktion.py
+\end_layout
+
+\begin_layout Standard
+Das Skript dient zur Ermittlung der RV einer Linie in Doppelsternsystemen
+ (SB2), die in 2 Linien aufgespalten sein kann.
+\end_layout
+
+\begin_layout Standard
+Liest den Spektrenkatalog ein (Zeitserie von normierten 1d-Spektren im tab-Forma
+t, 2 Spalten WAVE und FLUX).
+ Festlegung des Linienminimums per Interaktion und Bestimmung der Radialgeschwin
+digkeit aus dem Minimum.
+ Plottet alle Spektren zum markieren von bis zu 2 Linien-Minima und gibt
+ ermittelte Daten (RV und Apex) als ascii-Dateien (tab-separiert, als .dat)
+ aus.
+ Die RV's sind nicht baryzentrisch korrigiert.
+\end_layout
+
+\begin_layout Subsection*
+RV_MessungAnLinie_Zeitserie_dat_perInteraktion_regression_2Linien.py
+\end_layout
+
+\begin_layout Standard
+Wie das vorige Skript, nur dass das Minimum (die Minima der beiden Linien)
+ rechnerisch per Regression (Grad 2, 4 oder 6) bestimmt wird.
+\end_layout
+
+\begin_layout Standard
+Liest einen Spektrenkatalog ein (Zeitserie von normierten 1d-Spektren im
+ tab-Format).
+ Festlegung des Linienminimums per Interaktion und bestimmt aus dem per
+ Regression errechneten Minimum die Radialgeschwindigkeit RV.
+ Plottet zur Kontrolle alle fittings und gibt ermittelte Daten als ascii-Dateien
+ (tab-separiert, als .dat) aus.
+\end_layout
+
+\begin_layout Subsection*
+RV_MessungAnLinie_Zeitserie_dat_perRegression.py
+\end_layout
+
+\begin_layout Standard
+Liest Spektrenkatalog ein (Zeitserie von normierten 1d-Spektren im tab-Format).
+ Fitted die gewählte Linie per Regression nten Grades und bestimmt aus dem
+ Minimum die Radialgeschwindigkeit RV.
+ Plottet alle fittings und gibt ermittelte Daten als ascii-Dateien (tab-separier
+t, als .dat) aus.
+\end_layout
+
+\begin_layout Subsection*
+RV_MessungAnLinie_Zeitserie_fits_perGaussfit.py
+\end_layout
+
+\begin_layout Standard
+Liest einen Spektrenkatalog ein (Zeitserie von normierten (!!!) 1d-Spektren
+ im fits-Format).
+ Berechnet aus dem Beobachtungszeitpunkt und den (anzupassenden) Koordinaten
+ des Beobachters und Objekts die baryzentrische Korrektur, fittet die gewählte
+ Linie per Gaussfit dreimal (gesamt und innere Bereiche) und bestimmt aus
+ dem heliozentrisch korrigierten Minimum die heliozentrisch korrigierte
+ Radialgeschwindigkeit RV.
+ Plottet alle fittings und gibt ermittelte Daten als ascii-Dateien (tab-separier
+t, als .dat) aus.
+\end_layout
+
+\begin_layout Subsection*
+RV_MessungAnLinie_Zeitserie_fits_perRBF.py
+\end_layout
+
+\begin_layout Standard
+Liest einen Spektrenkatalog ein (Zeitserie von normierten 1d-Spektren im
+ fit-Format).
+ Berechnet aus dem Beobachtungszeitpunkt und den (anzupassenden) Koordinaten
+ des Beobachters und Objekts die heliozentrische Korrektur, fittet die gewählte
+ Linie per Radial basis function (RBF) und bestimmt aus dem heliozentrisch
+ korrigierten Minimum die heliozentrisch korrigierte Radialgeschwindigkeit
+ RV.
+ Plottet zur Kontrolle alle fittings und gibt ermittelte Daten als ascii-Dateien
+ (tab-separiert, als .dat) aus.
+\end_layout
+
+\begin_layout Subsection*
+RV_MessungAnLinie_Zeitserie_fits_perRegression.py
+\end_layout
+
+\begin_layout Standard
+Liest einen Spektrenkatalog ein (Zeitserie von normierten 1d-Spektren im
+ fits-Format).
+ Berechnet aus dem Beobachtungszeitpunkt und den (anzupassenden) Koordinaten
+ des Beobachters und Objekts die heliozentrische Korrektur, fitted die gewählte
+ Linie im Minimumbereich per Regression und bestimmt aus dem (heliozentrisch
+ korrigierten) Minimum die (heliozentrisch korrigierte) Radialgeschwindigkeiten
+ RV und RV_bc.
+ Plottet alle fittings und gibt ermittelte Daten als ascii-Dateien (tab-separier
+t, als .dat) aus.
+\end_layout
+
+\begin_layout Subsection*
+RV_MessungAnLinie_Zeitserie_fits_perRegression_AbsUndEmi.py
+\end_layout
+
+\begin_layout Standard
+Liest einen Spektrenkatalog ein (Zeitserie von normierten 1d-Spektren im
+ fits-Format).
+ Berechnet aus dem Beobachtungszeitpunkt und den (anzupassenden) Koordinaten
+ des Beobachters und Objekts die heliozentrische Korrektur, fitted die gewählte
+ Linie im Minimum(Absorption)- oder Maximum(Emission)bereich per Regression
+ und bestimmt aus dem heliozentrisch korrigierten Minimum/Maximum die heliozentr
+isch korrigierte Radialgeschwindigkeit RV.
+ Plottet und speichert alle fittings und gibt die ermittelten Daten als
+ ascii-Datei (Komma-separiert, als .csv) aus.
+\end_layout
+
+\begin_layout Subsection*
+RV_MessungAnLinie_Zeitserie_fits_perSpline.py
+\end_layout
+
+\begin_layout Standard
+Liest einen Spektrenkatalog ein (Zeitserie von normierten 1d-Spektren im
+ fits-Format).
+ Berechnet aus dem Beobachtungszeitpunkt und den (anzupassenden) Koordinaten
+ des Beobachters und Objekts die heliozentrische Korrektur, fitted die gewählte
+ Linie per Spline und bestimmt aus dem (heliozentrisch korrigierten) Minimum
+ die (heliozentrisch korrigierte) Radialgeschwindigkeiten RV und RV_bc.
+ Plottet alle fittings und gibt ermittelte Daten als ascii-Dateien (tab-separier
+t, als .dat) aus.
+\end_layout
+
+\begin_layout Section*
+Ordner SNR
+\end_layout
+
+\begin_layout Subsection*
+SNR_betasigma.py
+\end_layout
+
+\begin_layout Standard
+Berechnet für eine Serie von 1d-fits-Spektren mittels des beta*sigma-Verfahrens
+ das SNR jedes Spektrums.
+ Falls sinnvoll die Parameter N und j im Skript anpassen (Zeilen 40 und
+ 43).
+\end_layout
+
+\begin_layout Subsection*
+SNR_fits_mehrereBereiche.py
+\end_layout
+
+\begin_layout Standard
+Plottet das gewählte 1d-fits-Spektrum.
+ Wähle die Bereiche für die SNR-Berechnung (Kontinuum) aus, in dem du mit
+ linken Mausklicks die Grenzen setzt und mit doppeltem Drücken der Escape-Taste
+ die jeweilige Eingabe des Bereichs beendest.
+ Es können beliebig viele Bereiche eingegeben werden.
+\end_layout
+
+\begin_layout Subsection*
+verrauschen.py
+\end_layout
+
+\begin_layout Standard
+Mit dem Skript kann man zusätzliches Rauschen in ein Spektrum einbringen.
+\end_layout
+
+\begin_layout Section*
+Ordner theoreticalSpectra
+\end_layout
+
+\begin_layout Subsection*
+KunstspektrumErzeugen.py
+\end_layout
+
+\begin_layout Standard
+Das Skript erzeugt ein künstliches, per gaußbroadening auf eine bestimmte
+ FWHM, ausgedrückt durch eine Auflösung R, verbreitertes Linien-Spektrum.
+ In den Zeilen 19 bis 24 werden die Linien, Linienstärken, Wellenlängenbereich
+ und R definiert.
+\end_layout
+
+\begin_layout Subsection*
+Kurucz_Modell_GaussBroadened.py
+\end_layout
+
+\begin_layout Standard
+Laden eines Kuruzc-Sternatmosphärenmodells (1d-Spektrum) nach Auswahl von
+ T
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+eff
+\end_layout
+
+\end_inset
+
+ und log g.
+ Convolution mit einer Gaußfunktion auf Spektrographenauflösung, Auswahl
+ des Wellenlängenbereiches und Anpassung auf eine gewünschte Schrittbreite.
+ Speicherung als ASCII-tab-Tabelle und als .fit mit dem einzugebenden Filename.
+ Speicherung des Plot als PDF.
+\end_layout
+
+\begin_layout Standard
+Um das Skript verwenden zu können muss im User-Verzeichnis ein Ordner PyAData
+ existieren mit den Modellspektren.
+ Der Ordner wird beim Aufrufen des Skripts 'Get access to the models' in
+ https://pyastronomy.readthedocs.io/en/latest/pyaslDoc/resBasedDoc/kuruczModels.htm
+l angelegt.
+\end_layout
+
+\begin_layout Subsection*
+Pollux_Ausschnitt_rebinned_convol_spec.py
+\end_layout
+
+\begin_layout Standard
+In der Pollux-Datenbank (http://pollux.graal.univ-montp2.fr/) lassen sich theoretis
+che Spektren für die verschiedensten physikalischen Sterneigenschaften herunterl
+aden.
+ Wir verwenden das Format .spec.
+\end_layout
+
+\begin_layout Standard
+Einlesen eines synthetischen Spektrums in Form einer Tabelle (wie als .spec
+ in der Pollux-Datenbank erhältlich).
+ Verwendet wird der normierte Flux.
+ Berechnung eines wählbaren Wellenlängenausschnitts (Pandas Dataframe mit
+ 'newtable' bezeichnet).
+ Dieser Bereich wird dann mit einer wählbaren Schrittweite rebinned und
+ anschließend noch zusätzlich mit einer wählbaren FWHM (Apparateprofil)
+ gefaltet.
+ Geplottet wird der gewählte rebinnte Wellenlängenbereich und zusätzlich
+ das gefaltete Spektrum.
+ Der rebinnte Flux-Ausschnitt des ursprünglichen .spec und der rebinnte und
+ convolvierte Flux wird zusammen mit der Wellenlänge in je einer zweispaltigen
+ ascii-Tabelle (spacer = tab) und in je einer fits-Datei abgespeichert.
+\end_layout
+
+\begin_layout Section*
+Ordner Zeitreihe
+\end_layout
+
+\begin_layout Subsection*
+Crop_Auschnitt_Zeitserie_fits.py
+\end_layout
+
+\begin_layout Standard
+Fileliste erstellen für wellenlängenkalibrierte 1d_Spektren einer Zeitreihe
+ im fit-Format.
+ Plotten aller Spektren mit Wahl, ob die Grafik gespeichert werden soll..
+ Ausdrucken des gemeinsam abgedeckten Wellenlängenbereichs in der Konsole.
+ Beschneiden aller Spektren auf einen wählbaren Wellenlängenbereich und
+ abspeichern aller beschnittenen als fit mit Wellenlängenbereich im Dateinamen.
+\end_layout
+
+\begin_layout Subsection*
+MittelungVon_fits.py
+\end_layout
+
+\begin_layout Standard
+1d-Spektren im fits-Format.
+ Sie müssen alle gleiches header['CRVAL1'], header['CDELT1'], header['NAXIS1'],
+ header['CRPIX1']) haben.
+ Diese Variablen werden für jedes Spektrum ausgedruckt (Kontrolle der Gleichheit
+).
+ Mit der Eingabe von 'y' werden alle Fluxe der Spektrenserie gemittelt und
+ das mittlere Spektrum als fit abgespeichert.
+\end_layout
+
+\begin_layout Subsection*
+timeseries_einPlot_mitOffset.py
+\end_layout
+
+\begin_layout Standard
+Liest alle 1d-fits-Spektren einer Serie ein und plottet sie mit einem wählbaren
+ Offset übereinander.
+ Speichert den Graph als PNG und als PDF.
+\end_layout
+
+\begin_layout Subsection*
+timeseries_plot_JeEineGrafik.py
+\end_layout
+
+\begin_layout Standard
+Liest alle 1d-fits-Spektren einer Serie ein und plottet sie in getrennten
+ Grafiken.
+ Die Plots werden als PDF gespeichert.
+\end_layout
+
+\begin_layout Subsection*
+Zeitserie_Beobachtungszeitpunkte.py
+\end_layout
+
+\begin_layout Standard
+Liest die 1d-fits-Spektren einer Spektrenserie ein und druckt die Beobachtungsze
+itpunkte aus.
+ Außerdem werden der Beginn und das Ende des Wellenlängenbereichs jedes
+ Spektrums ausgegeben.
+ Die Beobachtungzeitpunkte werden in einer ASCII-Datei abgespeichert.
+\end_layout
+
+\begin_layout Subsection*
+Zeitserie_Spektren_smoothen.py
+\end_layout
+
+\begin_layout Standard
+Einlesen einer Serie von 1d-fits-Dateien und smoothen des fluxes mit einer
+ bestimmten Fensterbreite.
+ Abspeichern der geglätteten fits.
+ 
+\end_layout
+
+\end_body
+\end_document
