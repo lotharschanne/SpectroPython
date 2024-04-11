@@ -48,12 +48,12 @@ For series of 1d spectra (fits or ascii format):
 	
 	
 
-Theoretical spectra
+For Theoretical spectra:
 
   Cropping, rebinning and convolving of a spectrum in ascii format to a certain wavelength range, a certain step size and a certain resolution
 	
 
-Binaries
+For Binaries:
 
   Determination of the period from a list of observation times (JD) and radial velocities
 	
